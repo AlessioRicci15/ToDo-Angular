@@ -8,7 +8,7 @@ import { TodosComponent } from './todos/todos.component';
 @NgModule({
   declarations: [
     AppComponent,
-    TodosComponent
+    TodosComponent,
   ],
   imports: [
     BrowserModule,
