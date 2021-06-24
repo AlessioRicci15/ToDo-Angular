@@ -4,11 +4,13 @@
 
 <div class="container">
     <div class="add-todo-box">
-        <form>
+
+        <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
             <h2 class="title-form">New Todo</h2>
-            <div class="field is-grouped">
+            <div class="field is-grouped my-0">
                 <p class="control is-expanded">
-                    <input class="input" type="text" placeholder="Type ToDo text here...">
+                    <input ngModel #todoTextField="ngModel" minlength="2" required name="text" class="input" type="text"
+                        placeholder="Type ToDo text here...">
                 </p>
                 <p class="control">
                     <button class="button">
@@ -16,48 +18,25 @@
                     </button>
                 </p>
             </div>
+            <!-- <div *ngIf="todoTextField.invalid && showValidationErrors">
+                <p class="help is-danger" *ngIf="todoTextField.errors.required">Please enter text of your ToDo</p>
+                <p class="help is-danger" *ngIf="todoTextField.errors.minlength">ToDo text must be at least 2 characters</p>
+            </div> -->
         </form>
+
     </div>
 </div>
 
 <section class="section">
     <div class="container">
         <div class="todo-list">
-
-            <div class="todo-item completed">
-                <div class="check-box">
-                    <i class="material-icons">check</i>
-                </div>
-                <div class="todo-text">
-                    This is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-TextThis is a placeholder for ToDo-Text
-                </div>
-                <div class="todo-controls-box">
-                    <div class="todo-contol-button">
-                        <i class="material-icons">edit</i>
-                    </div>
-                    <div class="todo-contol-button">
-                        <i class="material-icons">delete</i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="todo-item">
-                <div class="check-box">
-                    <i class="material-icons">check</i>
-                </div>
-                <div class="todo-text">
-                    This is a placeholder for ToDo-Text
-                </div>
-                <div class="todo-controls-box">
-                    <div class="todo-contol-button">
-                        <i class="material-icons">edit</i>
-                    </div>
-                    <div class="todo-contol-button">
-                        <i class="material-icons">delete</i>
-                    </div>
-                </div>
-            </div>
-
+            <todo-item 
+                *ngFor="let todo of todos" 
+                [todo]="todo" 
+                (todoClicked)="toggleCompleted(todo)"
+                (editClicked)="editTodo(todo)"
+                (deleteClicked)="deleteTodo(todo)"
+            ></todo-item>
         </div>
     </div>
 </section>

@@ -1,4 +1,37 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
 * {
     margin: 0;
     padding: 0;
+}
+
+html, body { height: 100%; }
+body { margin: 0; }
+
+.button {
+    color: white !important;
+    background: linear-gradient(to right, salmon, skyblue);
+    min-width: 100px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(black, 0.2);
+    
+    &:hover {
+        background: linear-gradient(to left, salmon, skyblue);
+        opacity: .75;
+        box-shadow: 0 5px 15px rgba(black, 0.5);
+    }
+
+    &:active {
+        background: linear-gradient(to left, salmon, skyblue);
+        opacity: .75;
+        box-shadow: 0 5px 15px rgba(black, 0.7);
+    }
+
+    &:focus {
+        background: linear-gradient(to right, salmon, skyblue);
+        opacity: .85;
+        box-shadow: 0 5px 15px rgba(black, 0.3);
+    }
 }
