@@ -14,7 +14,6 @@ export class TodoItemComponent implements OnInit {
   @Output() deleteClicked: EventEmitter<void> = new EventEmitter()
 
   constructor() { }
-
   ngOnInit(): void {
   }
 
