@@ -9,7 +9,7 @@ import { TodoItemComponent } from './todo-item/todo-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditToDoDialogComponent } from './edit-to-do-dialog/edit-to-do-dialog.component';
 
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ToolTipDirective } from './shared/tool-tip.directive';
 import { TollTipSingletonDirective } from './shared/tool-tip-singleton.directive';
 

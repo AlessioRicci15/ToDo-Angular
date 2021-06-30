@@ -17,13 +17,13 @@ export class TodosComponent implements OnInit {
 
   constructor(private dataService: DataService, private dialog: MatDialog) {
     this.todos = this.dataService.getAllTodos()
-   }
+  }
 
   ngOnInit(): void {
   }
 
-  onFormSubmit(form: NgForm){
-    if(form.invalid){
+  onFormSubmit(form: NgForm) {
+    if (form.invalid) {
       return //this.showValidationErrors = true
     } else {
       this.dataService.addTodo(new Todo(form.value.text))
@@ -34,6 +34,8 @@ export class TodosComponent implements OnInit {
 
   toggleCompleted(todo: Todo) {
     todo.completed = !todo.completed
+    const index = this.todos.indexOf(todo)
+    this.dataService.toggleCompleted(index, todo)
   }
 
   editTodo(todo: Todo) {
@@ -45,10 +47,10 @@ export class TodosComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if(result){
+      if (result) {
         this.dataService.updateTodo(index, result)
       }
-  })
+    })
   }
 
   deleteTodo(todo: Todo) {
