@@ -19,7 +19,7 @@ export class TollTipSingletonDirective implements AfterViewInit {
     })
   }
 
-  getTippyInstances(){
+  getTippyInstances() {
     return this.elementsWithTooltips?.toArray().map((t) => {
       return t.tippyInstance
     })

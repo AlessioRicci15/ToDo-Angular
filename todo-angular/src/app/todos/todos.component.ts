@@ -40,12 +40,10 @@ export class TodosComponent implements OnInit {
 
   editTodo(todo: Todo) {
     const index = this.todos.indexOf(todo)
-
     let dialogRef = this.dialog.open(EditToDoDialogComponent, {
       width: '70%',
       data: todo
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.dataService.updateTodo(index, result)

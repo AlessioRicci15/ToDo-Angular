@@ -4,7 +4,6 @@
 
 <div class="container add-todo-box-container">
     <div class="add-todo-box">
-
         <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
             <h2 class="title-form">New Todo</h2>
             <div class="field is-grouped my-0">
@@ -30,13 +29,8 @@
 <section class="section">
     <div class="container">
         <div class="todo-list">
-            <todo-item 
-                *ngFor="let todo of todos" 
-                [todo]="todo" 
-                (todoClicked)="toggleCompleted(todo)"
-                (editClicked)="editTodo(todo)"
-                (deleteClicked)="deleteTodo(todo)"
-            ></todo-item>
+            <todo-item *ngFor="let todo of todos" [todo]="todo" (todoClicked)="toggleCompleted(todo)"
+                (editClicked)="editTodo(todo)" (deleteClicked)="deleteTodo(todo)"></todo-item>
         </div>
     </div>
 </section>

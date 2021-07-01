@@ -17,9 +17,7 @@ export class DataService {
           result.forEach((element: any) => {
             this.newOne = false
             this.addTodo(new Todo(element.title, element.completed))
-          })
-        )
-      });
+          }))});
     };
     init();
   }
@@ -28,19 +26,26 @@ export class DataService {
     return this.todos
   }
 
-  toggleCompleted(index: number, todo: Todo) {
-    const tog = async () => {
-      const data = {
-        title: todo.text,
-        completed: todo.completed
-      };
-      fetch(this.url + (index + 1), {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-    };
-    tog();
+  add(data: any) {
+    fetch(this.url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  }
+
+  update(data: any, index: number) {
+    fetch(this.url + index, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  }
+
+  delete(index: number) {
+    fetch(this.url + index, {
+      method: 'DELETE'
+    })
   }
 
   addTodo(todo: Todo) {
@@ -51,11 +56,7 @@ export class DataService {
           title: todo.text,
           completed: todo.completed
         };
-        fetch(this.url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
+        this.add(data)
       };
       add();
     }
@@ -69,13 +70,29 @@ export class DataService {
         title: updatedTodo.text,
         completed: updatedTodo.completed
       };
-      fetch(this.url + (index + 1), {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+      this.update(data, index);
     };
     edi();
+  }
+
+  toggleCompleted(index: number, todo: Todo) {
+    const tog = async () => {
+      const data = {
+        title: todo.text,
+        completed: todo.completed
+      };
+      this.update(data, index + 1);
+    };
+    tog();
+  }
+
+  deleteTodo(index: number) {
+    const del = async () => {
+      this.delete(index + 1)
+    }
+    del();
+    this.updateIndexes(index);
+    this.todos.splice(index, 1)
   }
 
   updateIndexes(index: number) {
@@ -89,46 +106,22 @@ export class DataService {
                 var todo = new Todo(element.title, element.completed)
                 idtodos.push(todo)
                 const del = async () => {
-                  fetch(this.url + element.id, {
-                    method: 'DELETE',
-                  })
+                  this.delete(element.id)
                 };
                 del();
-              }
-            })
-          ).then((result) => {
-            idtodos.shift()
-            idtodos.forEach(element => {
-              const idadd = async () => {
-                const data = {
-                  title: element.text,
-                  completed: element.completed
+              }})).then((result) => {
+              idtodos.shift()
+              idtodos.forEach(element => {
+                const idadd = async () => {
+                  const data = {
+                    title: element.text,
+                    completed: element.completed
+                  };
+                  this.add(data)
                 };
-                fetch(this.url, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify(data),
-                });
-              };
-              idadd();
-            })
-          }
-          )
-        });
-      };
+                idadd();
+              })})});};
       ediID();
-
     }
-  }
-
-  deleteTodo(index: number) {
-    this.updateIndexes(index);
-    this.todos.splice(index, 1)
-    const del = async () => {
-      fetch(this.url + (index + 1), {
-        method: 'DELETE',
-      })
-    };
-    del();
   }
 }

@@ -1,42 +1,44 @@
 .heading-section {
-    background: linear-gradient(to right, lightcoral, lightblue);
-    padding: 100px;
-    padding-bottom: 150px;
-    text-align: center;
+  background: linear-gradient(to right, lightcoral, lightblue);
+  padding: 100px;
+  padding-bottom: 150px;
+  text-align: center;
 }
 
 .title {
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-    color: seashell;
-    text-shadow: 0px 5px 10px rgba(black, 0.5);
-    font-size: 4rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: seashell;
+  text-shadow: 0px 5px 10px rgba(black, 0.5);
+  font-size: 4rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .title-form {
-    margin: 0;
-    padding: 0;
-    text-shadow: 0px 5px 10px rgba(black, 0.1);
-    font-size: 2rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-shadow: 0px 5px 10px rgba(black, 0.1);
+  font-size: 2rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .container {
-    max-width: 80%;
+  max-width: 80%;
 }
 
 .add-todo-box {
-    padding: 25px;
-    border-radius: 15px;
-    margin-top: -75px;
-    background-color: whitesmoke;
-    box-shadow: 0 5px 15px rgba(black, 0.5);
+  padding: 25px;
+  border-radius: 15px;
+  margin-top: -75px;
+  background-color: whitesmoke;
+  box-shadow: 0 5px 15px rgba(black, 0.5);
 }
 
 .add-todo-box-container {
-    position: sticky;
-    top: 0;
-    z-index: 2;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }

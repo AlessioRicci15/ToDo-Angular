@@ -12,19 +12,18 @@ export class EditToDoDialogComponent implements OnInit {
 
   showValidationErrors: boolean = false
 
-  constructor(
-    public dialogRef: MatDialogRef<EditToDoDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<EditToDoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public todo: Todo) { }
 
   ngOnInit(): void {
   }
 
-  close(){
+  close() {
     this.dialogRef.close()
   }
 
-  onFormSubmit(form: NgForm){
-    if(form.invalid){
+  onFormSubmit(form: NgForm) {
+    if (form.invalid) {
       return //this.showValidationErrors = true
     } else {
       //this.showValidationErrors = false
@@ -34,6 +33,5 @@ export class EditToDoDialogComponent implements OnInit {
       }
       this.dialogRef.close(updateToDo)
     }
-    
   }
 }
