@@ -106,7 +106,7 @@ export class DataService {
                 var todo = new Todo(element.title, element.completed)
                 idtodos.push(todo)
                 const del = async () => {
-                  this.delete(element.id)
+                  this.delete(element.id) 
                 };
                 del();
               }})).then((result) => {
