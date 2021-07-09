@@ -1,19 +1,9 @@
 {
   "todo": [
     {
-      "title": "df",
-      "completed": false,
+      "title": "Hello",
+      "completed": true,
       "id": 1
-    },
-    {
-      "title": "fsd",
-      "completed": false,
-      "id": 2
-    },
-    {
-      "title": "fweg",
-      "completed": false,
-      "id": 3
     }
   ]
 }
